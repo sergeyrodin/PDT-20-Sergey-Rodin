@@ -57,3 +57,8 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+
+.settings/**
+bin/**
+test-output/**
+.metadata/**
