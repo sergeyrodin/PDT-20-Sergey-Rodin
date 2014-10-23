@@ -9,9 +9,9 @@ public class ContactData {
 	public String primary_phone_work;
 	public String email1;
 	public String email2;
-	public String birthday_day;
-	public String birthday_month;
-	public String birthday_year;
+	public String birthday;
+	public String birthmonth;
+	public String birthyear;
 	public String group;
 	public String address2;
 	public String phone2;
@@ -41,9 +41,9 @@ public class ContactData {
 		this.email1 = email;
 		this.email2 = email2;
 		this.address1 = address1;
-		this.birthday_day = birthday_day;
-		this.birthday_month = birthday_month;
-		this.birthday_year = birthday_year;
+		this.birthday = birthday_day;
+		this.birthmonth = birthday_month;
+		this.birthyear = birthday_year;
 		this.group = group;
 	}
 }

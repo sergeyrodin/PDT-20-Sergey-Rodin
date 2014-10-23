@@ -11,24 +11,21 @@ public class GroupHelper extends HelperBase{
 		super(manager);
 	}
 
-	public void submitGroupCreation() {
-		
-		manager.driver.findElement(By.name("submit")).click();
-	}
-
 	public void initGroupCreation() {
 		
-		manager.driver.findElement(By.name("new")).click();
+		click(By.name("new"));
+	}
+	
+	public void submitGroupCreation() {
+		
+		click(By.name("submit"));
 	}
 
-	public void fillGroupForm(ApplicationManager app, GroupCreationTests groupCreationTests, GroupData group) {
+	public void fillGroupForm(GroupData group) {
 		
-		manager.driver.findElement(By.name("group_name")).clear();
-		manager.driver.findElement(By.name("group_name")).sendKeys(group.name);
-		manager.driver.findElement(By.name("group_header")).clear();
-		manager.driver.findElement(By.name("group_header")).sendKeys(group.header);
-		manager.driver.findElement(By.name("group_footer")).clear();
-		manager.driver.findElement(By.name("group_footer")).sendKeys(group.footer);
+		type(By.name("group_name"), group.name);
+		type(By.name("group.headere"), group.header);
+		type(By.name("group.footer"), group.footer);
 	}
 
 }
