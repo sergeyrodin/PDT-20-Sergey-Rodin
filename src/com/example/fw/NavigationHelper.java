@@ -1,0 +1,31 @@
+package com.example.fw;
+
+import org.openqa.selenium.By;
+
+public class NavigationHelper extends HelperBase{
+
+	public NavigationHelper(ApplicationManager manager) {
+		super(manager);
+	}
+
+	public void openMainPage() {
+		  
+	    manager.driver.get(manager.baseUrl + "/addressbookv4.1.4/");
+	}
+
+	public void gotoGroupsPage() {
+		
+	    manager.driver.findElement(By.linkText("groups")).click();
+	}
+
+	public void gotoHomePage() {
+		
+	    manager.driver.findElement(By.linkText("home")).click();
+	}
+
+	public void returnToGroupsPage() {
+		
+	    manager.driver.findElement(By.linkText("group page")).click();
+	}
+
+}

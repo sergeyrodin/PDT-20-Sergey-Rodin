@@ -7,8 +7,8 @@ public class ContactCreationTests extends TestBase {
 @Test
 public void testNonEmptyContactCreation() throws Exception {
 	  
-	openMainPage();
-	initContactCreation();
+	app.navigationHelper.openMainPage();
+	app.contactHelper.initContactCreation();
 	ContactData contact = new ContactData();
     contact.first_name = "Test";
     contact.last_name = "User";
@@ -22,17 +22,17 @@ public void testNonEmptyContactCreation() throws Exception {
     contact.birthday_day = "14";
     contact.birthday_month = "February";
     contact.birthday_year = "2000";
-	fillContactForm(contact);
-	submitCreation();
-	gotoHomePage();
+	app.contactHelper.fillContactForm(app, this, contact);
+	app.contactHelper.submitContactCreation();
+	app.navigationHelper.gotoHomePage();
 
   }
   
 @Test
   public void testEmptyContactCreation() throws Exception {
 	  
-	openMainPage();
-	initContactCreation();
+	app.navigationHelper.openMainPage();
+	app.contactHelper.initContactCreation();
 	ContactData contact = new ContactData();
     contact.first_name = "";
     contact.last_name = "";
@@ -46,9 +46,9 @@ public void testNonEmptyContactCreation() throws Exception {
     contact.birthday_day = "-";
     contact.birthday_month = "-";
     contact.birthday_year = "";
-	fillContactForm(contact);
-	submitCreation();
-	gotoHomePage();
+	app.contactHelper.fillContactForm(app, this, contact);
+	app.contactHelper.submitContactCreation();
+	app.navigationHelper.gotoHomePage();
 
   }
 
