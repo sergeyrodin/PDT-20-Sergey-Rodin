@@ -19,7 +19,7 @@ public class ContactHelper extends HelperBase{
 		type(By.name("firstname"), contact.first_name);
 	    type(By.name("lastname"), contact.last_name);
 	    type(By.name("address"), contact.address1);
-	    type(By.name("home"), contact.first_name);
+	    type(By.name("home"), contact.primary_phone_home);
 	    type(By.name("mobile"), contact.primary_phone_mobile);
 	    type(By.name("work"), contact.primary_phone_work);
 	    type(By.name("email"), contact.email1);
@@ -36,4 +36,16 @@ public class ContactHelper extends HelperBase{
 	public void submitContactCreation() {
 		click(By.name("submit"));
 	}
+	
+	public void initContactModification(int index) {
+		click(By.xpath("//img[@alt='Edit']"));
+	}
+
+	public void submitContactModification() {
+		click(By.name("update"));
+	}
+
+	public void deleteContact() {
+		click(By.xpath("//input[@name='update'][@value='Delete']"));
+		}
 }
