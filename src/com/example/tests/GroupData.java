@@ -8,8 +8,8 @@ public class GroupData implements Comparable<GroupData>{
 	public GroupData() {
 	}
 	
-	public GroupData(String groupname, String footer, String header) {
-		this.name = groupname;
+	public GroupData(String name, String footer, String header) {
+		this.name = name;
 		this.footer = footer;
 		this.header = header;
 	}

@@ -1,11 +1,11 @@
 package com.example.tests;
 
+import static org.testng.Assert.assertEquals;
+
 import java.util.Collections;
 import java.util.List;
 
 import org.testng.annotations.Test;
-
-import static org.testng.Assert.assertEquals;;
 
 public class GroupCreationTests extends TestBase {
 	
@@ -13,38 +13,62 @@ public class GroupCreationTests extends TestBase {
   public void testNonEmptyGroupCreation() throws Exception {
 	app.getNavigationHelper().openMainPage();
     app.getNavigationHelper().gotoGroupsPage();
-    // save old state
-//    List<GroupData> oldList = app.getGroupHelper().getGroups();
-    // actions
+	
+	//save old state
+    List<GroupData> oldList = app.getGroupHelper().getGroups();
+	
+	//actions
     app.getGroupHelper().initGroupCreation();
     GroupData group = new GroupData();
-    group.name = "123123 name 1";
-    group.header = "123123header 1";
-    group.footer = "123123footer 1";
+    group.name = "name 1";
+    group.header = "header 1";
+    group.footer = "footer 1";
 	app.getGroupHelper().fillGroupForm(group);
 	app.getGroupHelper().submitGroupCreation();
     app.getNavigationHelper().returnToGroupsPage();
-//    // save new state
-//    List<GroupData> newList = app. getGroupHelper().getGroups();
-//    //compare stated
-//    assertEquals(newList.size(), oldList.size() + 1);
-//    
-//    oldList.add(group);
-//    Collections.sort(oldList);
-//    assertEquals(newList, oldList);
+    
+    //save new state
+    List<GroupData> newList = app.getGroupHelper().getGroups();
+    
+    //compare states
+    assertEquals(newList.size(), oldList.size() + 1);
+    System.out.println("Old List size = " + oldList.size());
+    System.out.println("New List size = " + newList.size());
+    
+    oldList.add(group);
+    Collections.sort(oldList);
+    assertEquals(newList, oldList);
+    
   }
 
 @Test
   public void testEmptyGroupCreation() throws Exception {
 	app.getNavigationHelper().openMainPage();
     app.getNavigationHelper().gotoGroupsPage();
+
+    //save old state
+    List<GroupData> oldList = app.getGroupHelper().getGroups();
+    
+    //actions
     app.getGroupHelper().initGroupCreation();
     GroupData group = new GroupData();
-    group.name = "gdf";
-    group.header = "sdf";
-    group.footer = "sdf";
+    group.name = "";
+    group.header = "";
+    group.footer = "";
 	app.getGroupHelper().fillGroupForm(group);
 	app.getGroupHelper().submitGroupCreation();
     app.getNavigationHelper().returnToGroupsPage();
+
+    //save new state
+    List<GroupData> newList = app.getGroupHelper().getGroups();
+    
+    //compare states
+    assertEquals(newList.size(), oldList.size() + 1);
+    System.out.println("Old List size = " + oldList.size());
+    System.out.println("New List size = " + newList.size());
+    
+    oldList.add(group);
+    Collections.sort(oldList);
+    assertEquals(newList, oldList);
   }
 }
