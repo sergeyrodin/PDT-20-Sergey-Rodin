@@ -29,11 +29,10 @@ public class GroupModificationTests extends TestBase {
     List<GroupData> newList = app.getGroupHelper().getGroups();
     
     //compare states
-    assertEquals(newList.size(), oldList.size());
     System.out.println("Old List size = " + oldList.size());
     System.out.println("New List size = " + newList.size());
     
-    oldList.remove(group);
+    oldList.remove(0);
     oldList.add(group);
     Collections.sort(oldList);
     assertEquals(newList, oldList);

@@ -31,6 +31,7 @@ public class GroupCreationTests extends TestBase {
     List<GroupData> newList = app.getGroupHelper().getGroups();
     
     //compare states
+    assertEquals(newList.size(), oldList.size() + 1);
     System.out.println("Old List size = " + oldList.size());
     System.out.println("New List size = " + newList.size());
     
@@ -62,6 +63,7 @@ public class GroupCreationTests extends TestBase {
     List<GroupData> newList = app.getGroupHelper().getGroups();
     
     //compare states
+    assertEquals(newList.size(), oldList.size() + 1);
     System.out.println("Old List size = " + oldList.size());
     System.out.println("New List size = " + newList.size());
     
