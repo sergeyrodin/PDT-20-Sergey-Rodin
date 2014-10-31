@@ -33,5 +33,6 @@ public class GroupRemovalTests extends TestBase {
     Collections.sort(oldList);
     assertEquals(newList, oldList);
     
+    
 	}
 }
