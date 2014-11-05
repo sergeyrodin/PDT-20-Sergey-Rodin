@@ -20,7 +20,7 @@ public class GroupModificationTests extends TestBase {
 	//actions
 	app.getGroupHelper().initGroupModification(0);
 	GroupData group = new GroupData();
-	group.name = "new name";
+	group.name = "modified group name";
 	app.getGroupHelper().fillGroupForm(group);
 	app.getGroupHelper().submitGroupModification();
     app.getNavigationHelper().returnToGroupsPage();	
@@ -29,8 +29,8 @@ public class GroupModificationTests extends TestBase {
     List<GroupData> newList = app.getGroupHelper().getGroups();
     
     //compare states
-    System.out.println("Old List size = " + oldList.size());
-    System.out.println("New List size = " + newList.size());
+    System.out.println("Old Groups List size = " + oldList.size());
+    System.out.println("New Groups List size = " + newList.size());
     
     oldList.remove(0);
     oldList.add(group);

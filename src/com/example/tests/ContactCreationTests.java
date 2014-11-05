@@ -1,13 +1,21 @@
 package com.example.tests;
 
+import static org.testng.Assert.assertEquals;
+import java.util.Collections;
+import java.util.List;
 import org.testng.annotations.Test;
 
-public class ContactCreationTests extends TestBase {
+public class ContactCreationTests extends TestBase{
 	
 @Test
 public void testNonEmptyContactCreation() throws Exception {
 	  
 	app.getNavigationHelper().openMainPage();
+
+    //save old state
+    List<ContactData> oldList = app.getContactHelper().getContacts();
+    
+    //actions
 	app.getContactHelper().initContactCreation();
 	ContactData contact = new ContactData();
     contact.first_name = "Test";
@@ -25,13 +33,29 @@ public void testNonEmptyContactCreation() throws Exception {
 	app.getContactHelper().fillContactForm(contact);
 	app.getContactHelper().submitContactCreation();
 	app.getNavigationHelper().gotoHomePage();
-
+	
+    //save new state
+    List<ContactData> newList  = app.getContactHelper().getContacts();
+    
+    //compare states
+    assertEquals(newList.size(), oldList.size() + 1);
+    System.out.println("Old Contacts List size = " + oldList.size());
+    System.out.println("New Contacts List size = " + newList.size());
+    
+    oldList.add(contact);
+    Collections.sort(oldList);
+    assertEquals(newList, oldList);
   }
   
 @Test
   public void testEmptyContactCreation() throws Exception {
 	  
 	app.getNavigationHelper().openMainPage();
+
+    //save old state
+    List<ContactData> oldList = app.getContactHelper().getContacts();
+  
+    //actions
 	app.getContactHelper().initContactCreation();
 	ContactData contact = new ContactData();
     contact.first_name = "";
@@ -49,6 +73,18 @@ public void testNonEmptyContactCreation() throws Exception {
 	app.getContactHelper().fillContactForm(contact);
 	app.getContactHelper().submitContactCreation();
 	app.getNavigationHelper().gotoHomePage();
+	
+    //save new state
+    List<ContactData> newList = app.getContactHelper().getContacts();
+  
+    //compare states
+    assertEquals(newList.size(), oldList.size() + 1);
+    System.out.println("Old Contacts List size = " + oldList.size());
+    System.out.println("New Contacts List size = " + newList.size());
+  
+    oldList.add(contact);
+    Collections.sort(oldList);
+    assertEquals(newList, oldList);
 
   }
 

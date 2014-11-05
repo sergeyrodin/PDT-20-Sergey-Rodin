@@ -1,9 +1,14 @@
 package com.example.fw;
 
-import org.openqa.selenium.By;
+import java.util.ArrayList;
+import java.util.List;
 
-import com.example.tests.ContactCreationTests;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
 import com.example.tests.ContactData;
+import com.example.tests.GroupData;
+import com.example.tests.TestBase;
 
 public class ContactHelper extends HelperBase{
 
@@ -36,16 +41,38 @@ public class ContactHelper extends HelperBase{
 	public void submitContactCreation() {
 		click(By.name("submit"));
 	}
-	
-	public void initContactModification(int index) {
-		click(By.xpath("//img[@alt='Edit']"));
-	}
-
+		
 	public void submitContactModification() {
-		click(By.name("update"));
-	}
-
-	public void deleteContact() {
-		click(By.xpath("//input[@name='update'][@value='Delete']"));
+		click(By.xpath("//input[@name='update'][@value='Update']"));
 		}
+
+	public void submitContactDeletion(int row, int column) {
+		selectContactByIndex(row, column);
+		click(By.xpath("//input[@name='update'][@value='Delete']"));
+	}
+	
+	private void selectContactByIndex(int row, int column) {
+		click(By.xpath("//table[@id='maintable']/tbody/tr[" + row + "]/td[" + column + "]/a/img[@alt='Edit']"));
+	}
+	
+	public void initContactModification(int row, int column) {
+		   selectContactByIndex(row, column);	
+		}
+
+	public List<ContactData> getContacts() {
+    	List<ContactData> contacts = new ArrayList<ContactData>(); 
+    	WebElement NumberOfResults = driver.findElement(By.xpath("//div[@id='content']/label/strong/span[@id='search_count']"));
+    	String NumberOfRows = NumberOfResults.getText();
+    	Integer Rows = Integer.valueOf(NumberOfRows);
+    	for (int i = 2; i < Rows + 2; i++)
+    	{
+    		ContactData contact = new ContactData();
+    		WebElement last_name = driver.findElement(By.xpath("//table[@id='maintable']/tbody/tr[" + i + "]/td[2]"));
+    		WebElement first_name = driver.findElement(By.xpath("//table[@id='maintable']/tbody/tr[" + i + "]/td[3]"));
+    		contact.first_name = first_name.getText();
+    		contact.last_name = last_name.getText();
+    		contacts.add(contact);
+        }    		
+    	return contacts;
+   }
 }

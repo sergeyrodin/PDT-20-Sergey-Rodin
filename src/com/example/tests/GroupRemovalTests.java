@@ -26,8 +26,8 @@ public class GroupRemovalTests extends TestBase {
     
     //compare states
     assertEquals(newList.size(), oldList.size() - 1);
-    System.out.println("Old List size = " + oldList.size());
-    System.out.println("New List size = " + newList.size());
+    System.out.println("Old Groups List size = " + oldList.size());
+    System.out.println("New Groups List size = " + newList.size());
     
     oldList.remove(0);
     Collections.sort(oldList);
