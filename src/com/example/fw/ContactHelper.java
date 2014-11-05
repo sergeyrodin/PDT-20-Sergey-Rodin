@@ -46,13 +46,13 @@ public class ContactHelper extends HelperBase{
 		click(By.xpath("//input[@name='update'][@value='Update']"));
 		}
 
-	public void submitContactDeletion(int row, int column) {
-		selectContactByIndex(row, column);
+	public void submitContactDeletion(int line, int column) {
+		selectContactByIndex(line, column);
 		click(By.xpath("//input[@name='update'][@value='Delete']"));
 	}
 	
-	private void selectContactByIndex(int row, int column) {
-		click(By.xpath("//table[@id='maintable']/tbody/tr[" + row + "]/td[" + column + "]/a/img[@alt='Edit']"));
+	private void selectContactByIndex(int line, int column) {
+		click(By.xpath("//table[@id='maintable']/tbody/tr[" + line + "]/td[" + column + "]/a/img[@alt='Edit']"));
 	}
 	
 	public void initContactModification(int row, int column) {

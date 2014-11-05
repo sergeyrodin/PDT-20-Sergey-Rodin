@@ -6,5 +6,5 @@ PDT-20-Sergey-Rodin
 3. DZ3
 4. DZ4
 5. DZ5
-
-
+6. DZ6
+7. DZ7
