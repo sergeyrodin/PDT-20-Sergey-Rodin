@@ -2,8 +2,6 @@ package com.example.fw;
 
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.text.NavigationFilter;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -11,6 +9,7 @@ public class ApplicationManager {
 	
 	public WebDriver driver;
 	public String baseUrl;
+	public int IndexY = 7;
 	private NavigationHelper navigationHelper;
 	private GroupHelper groupHelper;
 	private ContactHelper contactHelper;
@@ -19,22 +18,18 @@ public class ApplicationManager {
 	    driver = new FirefoxDriver();
 	    baseUrl = "http://localhost/";
 	    driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-	    
-	    navigationHelper = new NavigationHelper(this);
-	    groupHelper = new GroupHelper(this);
-	    contactHelper = new ContactHelper(this);
+	    driver.get(baseUrl + "/addressbookv4.1.4/");
 	}
 
 	public void stop() {
 	    driver.quit();
 	}
 	
-	public NavigationHelper getNavigationHelper() {
+	public NavigationHelper navigateTo() {
 		if (navigationHelper == null) {
 			navigationHelper = new NavigationHelper(this);
 		}
 		return navigationHelper;
-		
 	} 
 	
 	public GroupHelper getGroupHelper() {
@@ -42,7 +37,6 @@ public class ApplicationManager {
 			groupHelper = new GroupHelper(this);
 		}
 		return groupHelper;
-		
 	} 
 	
 	public ContactHelper getContactHelper() {
@@ -50,7 +44,6 @@ public class ApplicationManager {
 			contactHelper = new ContactHelper(this);
 		}
 		return contactHelper;
-		
 	} 
 
 }
